@@ -12,7 +12,8 @@
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
                 "-IF:/SDL3/include",
                 "-LF:/SDL3/lib",
-                "-lSDL3"
+                "-lSDL3",
+                "-lSDL3_image"
             ],
             "options": {
                 "cwd": "${fileDirname}"
