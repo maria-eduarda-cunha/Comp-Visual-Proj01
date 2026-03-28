@@ -1,13 +1,12 @@
 #include <stdio.h>
 #include <stdbool.h>
-//Linux e Windows
 #include <SDL3/SDL.h>
-
-//Apenas Windows 
+//Windows 
 #ifdef _WIN32 
-  #include <SDL3/SDL_image.h> 
+    #include <SDL3/SDL_image.h>
+//Linux
 #else 
-  #include <SDL3_image/SDL_image.h> 
+    #include <SDL3_image/SDL_image.h> 
 #endif
 
 int main(int argc, char* argv[]){
@@ -42,6 +41,33 @@ printf("Imagem '%s' carregada!\n", caminho_imagem);
 // Converte a imagem para RGBA32
 SDL_Surface* imagem = SDL_ConvertSurface(surface_original, SDL_PIXELFORMAT_RGBA32);
 SDL_DestroySurface(surface_original);
+
+// Cria janela principal (imagem)
+SDL_Window *janela_principal = SDL_CreateWindow("Imagem",imagem->w, imagem->h, SDL_WINDOW_RESIZABLE);
+
+//Erro criacao de janela principal
+if(!janela_principal){
+    printf("Erro ao criar janela principal: %s\n", SDL_GetError());
+    return 1;
+}
+// Renderiza imagem
+SDL_Renderer *renderer_principal = SDL_CreateRenderer(janela_principal, NULL);
+
+// Vars para histograma
+int largura_hist = 400;
+int altura_hist = 300;
+
+//Cria Janela Secundaria (histograma)
+SDL_Window *janela_hist = SDL_CreateWindow("Histograma", largura_hist, altura_hist, SDL_WINDOW_RESIZABLE);
+
+// Erro criacao janela secundaria
+if(!janela_hist){
+    printf("Erro ao criar janela histograma: %s\n", SDL_GetError());
+    return 1;
+}
+
+// Renderiza histograma
+SDL_Renderer *renderer_hist = SDL_CreateRenderer(janela_hist, NULL);
 
 if(!imagem){
     fprintf(stderr, "Erro ao converter o formato da imagem: %s\n", SDL_GetError());
