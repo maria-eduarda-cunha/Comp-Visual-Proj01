@@ -3,7 +3,7 @@
 #include <SDL3/SDL.h>
 //Windows 
 #ifdef _WIN32 
-    #include <SDL3/SDL_image.h>
+    #include <SDL3_image/SDL_image.h>
 //Linux
 #else 
     #include <SDL3_image/SDL_image.h> 
