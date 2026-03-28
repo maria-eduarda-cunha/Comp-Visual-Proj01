@@ -9,31 +9,14 @@
 
 Instalação da biblioteca SDL3 no codespace
 
-1. Dependências
+1. Instalar MSYS2
 
-`sudo apt update`
+`https://www.msys2.org`
 
-`sudo apt install build-essential cmake git libx11-dev libxcursor-dev libxrandr-dev libxi-dev libgl1-mesa-dev libxext-dev libwayland-dev libxkbcommon-dev`
 
 2. Baixar SDL
 
-`git clone https://github.com/libsdl-org/SDL.git`
-
-3. Build
-
-`cd SDL`
-
-`cmake -S . -B build`
-
-`cmake --build build`
-
-`sudo cmake --install build`
-
-4. Atualizar cache
-
-`cd ..`
-
-`sudo ldconfig`
+`pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-sdl3 mingw-w64-x86_64-sdl3-image`
 
 ## Como compilar
 
