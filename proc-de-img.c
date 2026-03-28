@@ -1,24 +1,17 @@
 #include <stdio.h>
-#include <stdbool.h>
+#include <stdbool.h>    
 #include <SDL3/SDL.h>
-//Windows 
-#ifdef _WIN32 
-    #include <SDL3/SDL_image.h>
-//Linux
-#else 
-    #include <SDL3_image/SDL_image.h> 
-#endif
+#include <SDL3_image/SDL_image.h>
 
 int main(int argc, char* argv[]){
-printf("Programa iniciou\n");
 if (argc != 2){
     fprintf(stderr, "Uso: %s <caminho_da_imagem.ext>\n", argv[0]);
     return 1;
 }
 
 // Inicializa o SDL3
-if (SDL_Init(SDL_INIT_VIDEO) != 0){
-    fprintf(stderr, "Erro ao inicializar SDL: %s\n", SDL_GetError());
+if (!SDL_Init(SDL_INIT_VIDEO)){
+    fprintf(stderr, "Erro ao inicializar SDL: %s\n", SDL_GetError);
     return 1;
 }
 
@@ -42,38 +35,12 @@ printf("Imagem '%s' carregada!\n", caminho_imagem);
 SDL_Surface* imagem = SDL_ConvertSurface(surface_original, SDL_PIXELFORMAT_RGBA32);
 SDL_DestroySurface(surface_original);
 
-// Cria janela principal (imagem)
-SDL_Window *janela_principal = SDL_CreateWindow("Imagem",imagem->w, imagem->h, SDL_WINDOW_RESIZABLE);
-
-//Erro criacao de janela principal
-if(!janela_principal){
-    printf("Erro ao criar janela principal: %s\n", SDL_GetError());
-    return 1;
-}
-// Renderiza imagem
-SDL_Renderer *renderer_principal = SDL_CreateRenderer(janela_principal, NULL);
-
-// Vars para histograma
-int largura_hist = 400;
-int altura_hist = 300;
-
-//Cria Janela Secundaria (histograma)
-SDL_Window *janela_hist = SDL_CreateWindow("Histograma", largura_hist, altura_hist, SDL_WINDOW_RESIZABLE);
-
-// Erro criacao janela secundaria
-if(!janela_hist){
-    printf("Erro ao criar janela histograma: %s\n", SDL_GetError());
-    return 1;
-}
-
-// Renderiza histograma
-SDL_Renderer *renderer_hist = SDL_CreateRenderer(janela_hist, NULL);
-
 if(!imagem){
     fprintf(stderr, "Erro ao converter o formato da imagem: %s\n", SDL_GetError());
     SDL_Quit();
     return 1;
 }
+
 
 // Analise da imagem (ver se é colorida)
 bool colorida = false;
@@ -111,6 +78,7 @@ for(int i = 0; i < total_pixels; ++i){
     } else {
         printf("Imagem convertida para escala de cinza!\n");
     }
+
 
 SDL_DestroySurface(imagem);
 SDL_Quit();
