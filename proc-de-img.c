@@ -1,17 +1,18 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <SDL3/SDL.h>
-#include <SDL3/SDL_image.h>
+#include <SDL3_image/SDL_image.h>
 
 int main(int argc, char* argv[]){
+printf("Programa iniciou\n");
 if (argc != 2){
     fprintf(stderr, "Uso: %s <caminho_da_imagem.ext>\n", argv[0]);
     return 1;
 }
 
 // Inicializa o SDL3
-if (!SDL_Init(SDL_INIT_VIDEO)){
-    fprintf(stderr, "Erro ao inicializar SDL: %s\n", SDL_GetError);
+if (SDL_Init(SDL_INIT_VIDEO) != 0){
+    fprintf(stderr, "Erro ao inicializar SDL: %s\n", SDL_GetError());
     return 1;
 }
 
