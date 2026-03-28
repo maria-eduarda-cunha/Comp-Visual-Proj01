@@ -1,7 +1,14 @@
 #include <stdio.h>
 #include <stdbool.h>
+//Linux e Windows
 #include <SDL3/SDL.h>
-#include <SDL3_image/SDL_image.h>
+
+//Apenas Windows 
+#ifdef _WIN32 
+  #include <SDL3/SDL_image.h> 
+#else 
+  #include <SDL3_image/SDL_image.h> 
+#endif
 
 int main(int argc, char* argv[]){
 printf("Programa iniciou\n");
