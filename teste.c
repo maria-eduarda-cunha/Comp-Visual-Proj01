@@ -5,19 +5,26 @@
 #include <SDL3_ttf/SDL_ttf.h>
 #include <math.h>
 
-// void normalizar_histograma(SDL_Surface* img, int hist[256], int total_pixels){
-//     
-// };
-// 
-//
-// void restaurar_imagem_original(SDL_Surface* img_orig, SDL_Surface* img){
-//     
-// };
-//
-//
-// void analisar_histograma(SDL_Surface* imagem, int total_pixels){
-//
-// }
+void calcular_histograma(SDL_Surface* img, int hist[256], int total_pixels){
+    Uint32* pixels = (Uint32*)img->pixels;
+    const SDL_PixelFormatDetails* detalhes = SDL_GetPixelFormatDetails(img->format);
+
+    for (int i = 0; i < total_pixels; i++) {
+        Uint8 r, g, b, a;
+        SDL_GetRGBA(pixels[i], detalhes, NULL, &r, &g, &b, &a);
+        hist[r]++;
+    }
+};
+ 
+
+void restaurar_imagem_original(SDL_Surface* img_orig, SDL_Surface* img){
+     
+};
+
+
+void analisar_histograma(SDL_Surface* imagem, int total_pixels){
+
+}
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {
@@ -104,11 +111,7 @@ int main(int argc, char *argv[]) {
     // ===== HISTOGRAMA =====
     int hist[256] = {0};
 
-    for (int i = 0; i < total_pixels; i++) {
-        Uint8 r, g, b, a;
-        SDL_GetRGBA(pixels[i], detalhes, NULL, &r, &g, &b, &a);
-        hist[r]++;
-    }
+    calcular_histograma(imagem, hist, total_pixels)
 
     // Normalização
     int max = 0;
@@ -185,7 +188,7 @@ int main(int argc, char *argv[]) {
     SDL_Color text_color = {255, 255, 255};
     
     //Definindo a superfície da janela 
-    SDL_Surface *surface_text =  TTF_RenderText_Blended(fonte, info_texto, 0, text_color);
+    SDL_Surface *surface_texto =  TTF_RenderText_Blended(fonte, info_texto, 0, text_color);
     if (!surface_texto) {
         fprintf(stderr, "Erro ao renderizar texto: %s\n", SDL_GetError());
     }
@@ -198,7 +201,7 @@ int main(int argc, char *argv[]) {
     SDL_Event e;
 
     // Botão
-    SDL_Rect botao = {10, altura_hist - 40, 120, 30} // posição e tamanho
+    SDL_Rect botao = {10, altura_hist - 40, 120, 30}; // posição e tamanho
     bool imagem_normalizada = false; // versão original ou normalizada
     bool mouse_em_cima = false; // seta
     bool mouse_pressionado = false; // clique
@@ -305,12 +308,12 @@ int main(int argc, char *argv[]) {
             if(e.key.key == SDLK_S){
                 printf("\nSalvando Imagem\n");
                 
-                if(IMG_SavePNG(ima)em, "output_image.png")
-
-printf()                 "Imagem salva com sucesso!\n" ;  
-                 else {}
-                    printf(stderr, "Erro ao salvar a imagem: %s\n", SDDL_GetErro)
-                {}
+                if(IMG_SavePNG(imagem), "output_image.png"){
+                    printf("Imagem salva com sucesso!")
+                }
+                 else {
+                    printf(stderr, "Erro ao salvar a imagem: %s\n", SDL_GetError())
+                }
             }
         }
     }

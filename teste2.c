@@ -181,10 +181,6 @@ int main(int argc, char *argv[]) {
 
     SDL_Window *janela_hist = SDL_CreateWindow("Histograma", largura_hist, altura_hist, 0);
     SDL_Renderer *renderer_hist = SDL_CreateRenderer(janela_hist, NULL);
-
-    // ===== BOTÃO =====
-    SDL_FRect botao = {20, 20, 150, 40};
-    bool mouse_hover = false;
     
     // ===== LOOP =====
     bool rodando = true;
@@ -222,6 +218,21 @@ int main(int argc, char *argv[]) {
             );
         }
 
+        // ===== BOTÃO =====
+        SDL_FRect botao = {20, 20, 150, 40};
+        SDL_SetRenderDrawColor(renderer_hist, 100,100,255,255);
+        SDL_Color text_color = {255,255,255};
+        const char* texto_botao = equalizado ? "Ver original" : "Equalizar";
+        SDL_Surface* surface_texto = TTF_RenderText_Blended(fonte, texto_botao, 0, text_color);
+        SDL_Texture* textura_texto = SDL_CreateTextureFromSurface(renderer_hist, surface_texto);
+        SDL_Rect dst_texto = {botao.x + 10, botao.y + 10, surface_texto->w, surface_texto->h};
+        SDL_RenderTexture(renderer_hist, textura_texto, NULL, &dst_texto);
+        SDL_DestroySurface(surface_texto);
+        SDL_DestroyTexture(textura_texto);
+        
+        
+        SDL_RenderFillRect(renderer_hist, &botao);
+
         SDL_RenderPresent(renderer_hist);
         
         // Salvar programa ao pressionar "S"
@@ -229,11 +240,12 @@ int main(int argc, char *argv[]) {
             if(e.key.key == SDLK_S){
                 printf("\nSalvando Imagem\n");
                 
-                if(IMG_SavePNG(imagem, "output_image.png"))
-                    printf("Imagem salva com sucesso!\n") ;  
-                 else {}
-                    printf(stderr, "Erro ao salvar a imagem: %s\n", SDL_GetError)
-                {}
+                if(IMG_SavePNG(imagem), "output_image.png"){
+                    printf("Imagem salva com sucesso!")
+                }
+                 else {
+                    printf(stderr, "Erro ao salvar a imagem: %s\n", SDL_GetError())
+                }
             }
         }
     }
