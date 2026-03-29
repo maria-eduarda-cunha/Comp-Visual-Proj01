@@ -2,6 +2,7 @@
 
 ## Integrantes:
 - Arthur Ryuiti Sato Furukawa - 10409106
+- Guilherme Garcia Lima - 10409637
 - Maria Eduarda Pinheiro Leal da Cunha - 10416676
 - Rodrigo Nascimento Tomaz - 10418449
 
