@@ -75,6 +75,6 @@ Maria Eduarda Pinheiro Leal da Cunha
 -
 
 Rodrigo Nascimento Tomaz
--
--
--
+- Função de equalização do histograma
+- Cálculo de média e desvio, assim como classificação de intensidade e contraste
+- Implementação da Interface interativa (botão, eventos)
