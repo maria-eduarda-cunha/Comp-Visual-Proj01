@@ -25,7 +25,7 @@ Instalação da biblioteca SDL3
 
 No terminal do powershell, rode o seguinte comando para mudar para MYSY2:
 
-`& "C:\Program Files\msys64\usr\bin\env.exe" MSYSTEM=MINGW64 CHERE_INVOKING=1 /usr/bin/bash -l`
+`& "C:\Program Files\msys64\usr\bin\env.exe" MSYSTEM=UCRT64 CHERE_INVOKING=1 /usr/bin/bash -l`
 
 Dentro do terminal MINGW64:
 
@@ -43,7 +43,38 @@ Dentro do terminal MINGW64:
 
 ## Como executar
 
-1. Colocar a imagem 
+1. Colocar a imagem (jpg., png. bmp.) que será processada, na mesma pasta do executável
+
+2. No terminal UCRT64, rodar o comando :
+
+`./proc-de-img.exe [sua-imagem.extensão]`
+
+3. Aparecerão duas janelas, uma conterá a sua imagem em escala de cinza, e a outra o histograma da imagem.
+
+4. Na janela do histograma, há um botão que, ao ser clicado, realiza a equalização da imagem. O resultado é exibido na janela de processamento em escala de cinza. Ao clicar novamente, a imagem retorna à sua forma original em escala de cinza.
+
+5. Ao pressionar a tecla 'S', será salva a imagem na forma processada com o nome 'output_image.png', na mesma pasta que se encontra o executável, caso já exista um arquivo com o nome 'output_image.png, o mesmo será sobreescrito.
+
+6. Para encerrar o programa, basta clicar o 'x' em uma das janelas.
 
 ## Divisão de tarefas
 
+Arthur Ryuiti Sato Furukawa
+- Função para carregamento da imagem
+- Conversão para escala de Cinza
+- Função para geração do arquivo output_image.png
+
+Guilherme Garcia Lima
+-
+-
+-
+
+Maria Eduarda Pinheiro Leal da Cunha
+-
+-
+-
+
+Rodrigo Nascimento Tomaz
+-
+-
+-

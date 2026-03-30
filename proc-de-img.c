@@ -329,7 +329,7 @@ int main(int argc, char *argv[]) {
         snprintf(
             info_texto,
             sizeof(info_texto),
-            "Claridade: %s | Contraste: %s",
+            "Intensidade: %s | Contraste: %s",
             intensidade,
             contraste
         );
