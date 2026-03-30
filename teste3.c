@@ -244,35 +244,35 @@ int main(int argc, char *argv[]) {
 
     while (rodando) {
         while (SDL_PollEvent(&e)) {
-            if (e.type == SDL_EVENT_QUIT) {
+            if (e.type == SDL_EVENT_QUIT || e.type == SDL_EVENT_WINDOW_CLOSE_REQUESTED) {
                 rodando = false;
             }
-
-             SDL_WindowID id_janela_hist = SDL_GetWindowID(janela_hist);
+             
+            SDL_WindowID id_janela_hist = SDL_GetWindowID(janela_hist);
 
             // seta do mouse
             if(e.type == SDL_EVENT_MOUSE_MOTION){
                 if(e.motion.windowID == id_janela_hist){
                     float mouse_x = e.motion.x;
                     float mouse_y = e.motion.y;
-                }
 
-                // Verifica se seta em cima do botão
+                    // Verifica se seta em cima do botão
                 mouse_em_cima = (mouse_x >= botao.x && mouse_x <= botao.x + botao.w && //seta entre borda esquerda e direita do botão
                                 mouse_y >= botao.y && mouse_y <= botao.y + botao.h); //seta entre borda superior e inferior do botão
-            }
-
-            if (e.type == SDL_EVENT_MOUSE_MOTION) {
-                float mouse_x = e.motion.x;
-                float mouse_y = e.motion.y;
-
-                mouse_em_cima = (mouse_x >= botao.x && mouse_x <= botao.x + botao.w &&
-                                 mouse_y >= botao.y && mouse_y <= botao.y + botao.h);
+                } else {
+                    mouse_em_cima = false;
+                }    
             }
 
             if (e.type == SDL_EVENT_MOUSE_BUTTON_DOWN) {
-                if (mouse_em_cima) {
-                    mouse_pressionado = true;
+                if(e.button.windowID == id_janela_hist){
+                    float mouse_x = e.button.x;
+                    float mouse_y = e.button.y;
+
+                    if(mouse_x >= botao.x && mouse_x <= botao.x + botao.w &&
+                    mouse_y >= botao.y && mouse_y <= botao.y + botao.h){
+                        mouse_pressionado = true;
+                    }
                 }
             }
 
