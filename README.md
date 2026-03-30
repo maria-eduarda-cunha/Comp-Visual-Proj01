@@ -59,22 +59,24 @@ Dentro do terminal MINGW64:
 
 ## Divisão de tarefas
 
-Arthur Ryuiti Sato Furukawa
+**Arthur Ryuiti Sato Furukawa**
+
 - Função para carregamento da imagem
 - Conversão para escala de Cinza
 - Função para geração do arquivo output_image.png
 
-Guilherme Garcia Lima
--
--
--
+**Guilherme Garcia Lima**
 
-Maria Eduarda Pinheiro Leal da Cunha
--
--
--
+- Configuração do ambiente (MSYS2 e integração das bibliotecas SDL3, SDL3_image e SDL3_ttf)
+- Execução de testes funcionais com múltiplos inputs de imagem (PNG, JPG e BMP)
 
-Rodrigo Nascimento Tomaz
+**Maria Eduarda Pinheiro Leal da Cunha**
+
+- Cálculo do histograma
+- Renderização gráfica (janela da imagem e histograma)
+
+**Rodrigo Nascimento Tomaz**
+
 - Função de equalização do histograma
 - Cálculo de média e desvio, assim como classificação de intensidade e contraste
 - Implementação da Interface interativa (botão, eventos)
