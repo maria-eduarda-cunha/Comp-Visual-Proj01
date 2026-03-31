@@ -3,7 +3,6 @@
 ## Integrantes:
 - Arthur Ryuiti Sato Furukawa - 10409106
 - Guilherme Garcia Lima - 10409637
-- Guilherme Garcia Lima - 10409637
 - Maria Eduarda Pinheiro Leal da Cunha - 10416676
 - Rodrigo Nascimento Tomaz - 10418449
 
@@ -40,7 +39,7 @@ Dentro do terminal MINGW64:
 
 3. Compilar
 
-`gcc proc-de-img.c -o programa $(pkg-config --cflags --libs sdl3 sdl3-image)`
+`gcc proc-de-img.c -o programa.exe $(pkg-config --cflags --libs sdl3 sdl3-image sdl3-ttf) -lm`
 
 ## Como executar
 
