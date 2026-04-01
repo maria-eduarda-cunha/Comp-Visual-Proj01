@@ -7,25 +7,26 @@
 - Rodrigo Nascimento Tomaz - 10418449
 
 ## Explicação do projeto
+Este projeto tem como objetivo ealizar o processamento de imagens digitais utilizando a biblioteca SDL3
 
-Instalação da biblioteca SDL3
+Funcionalidades implementadas:
 
-1. Instalar MSYS2
-
-`https://www.msys2.org`
-
-
-2. Baixar SDL no terminal de MSYS2
-
-`pacman -Syu`
-
-`pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-sdl3 mingw-w64-x86_64-sdl3-image pkgconf`
+- Leitura de imagens (PNG, JPG, BMP)
+- Conversão automática para escala de cinza
+- Geração de histograma
+- Cálculo de Média de intensidade
+- Cálculo de Contraste (desvio padrão)
+- Exibição gráfica da imagem e do histograma
+- Equalização do histograma via botão interativo
+- Alternância entre imagem original e equalizada
+- Interface com botão interativo (hover, clique e mudança de estado)
+- Opção de salvar a imagem processada
 
 ## Como compilar
 
 No terminal do powershell, rode o seguinte comando para mudar para MYSY2:
 
-`& "C:\Program Files\msys64\usr\bin\env.exe" MSYSTEM=UCRT64 CHERE_INVOKING=1 /usr/bin/bash -l`
+`& "C:\msys64\usr\bin\env.exe" MSYSTEM=UCRT64 CHERE_INVOKING=1 /usr/bin/bash -l`
 
 Dentro do terminal MINGW64:
 
@@ -43,7 +44,7 @@ Dentro do terminal MINGW64:
 
 ## Como executar
 
-1. Colocar a imagem (jpg., png. bmp.) que será processada, na mesma pasta do executável
+1. Colocar a imagem (jpg, png, bmp) que será processada, na mesma pasta do executável
 
 2. No terminal UCRT64, rodar o comando :
 
@@ -58,6 +59,8 @@ Dentro do terminal MINGW64:
 6. Para encerrar o programa, basta clicar o 'x' em uma das janelas.
 
 ## Divisão de tarefas
+
+O desenvolvimento foi realizado de forma colaborativa utilizando o recurso Live Share do VS Code, permitindo programação simultânea e testes em tempo real. A divisão foi feita da seguinte forma:
 
 **Arthur Ryuiti Sato Furukawa**
 
@@ -80,3 +83,13 @@ Dentro do terminal MINGW64:
 - Função de equalização do histograma
 - Cálculo de média e desvio, assim como classificação de intensidade e contraste
 - Implementação da Interface interativa (botão, eventos)
+
+## Tecnologias Utilizadas
+ 
+- Linguagem C
+- SDL3
+- SDL3_image
+- SDL3_ttf
+- MSYS2 / MinGW
+- Visual Studio Code (Live Share)
+- Ambiente Windows
